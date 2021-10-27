@@ -1,0 +1,94 @@
+//
+// Aside
+//
+
+.aside {
+	display: flex;
+	flex-direction: column;
+	width: get($aside-config, base, width);
+	background-color: get($aside-config, base, bg-color);
+
+	// Aside Menu
+	.aside-menu {
+		@include perfect-scrollbar-ver-offset(4px);
+	}
+}
+
+// Desktop Mode
+@include media-breakpoint-up(lg) {
+	.aside {
+		@include border-radius($border-radius);
+
+		// Aside Brand
+		.aside-brand {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			// Aside Toggle
+			.aside-toggle {
+				opacity: 0.7;
+				transition: $transition-link;
+
+				&:hover,
+				&.active {
+					transition: $transition-link;
+					opacity: 1;
+				}
+			}
+		}
+
+		// Fixed Aside Mode
+		.aside-fixed & {
+			position: fixed;
+			top: get($page-padding, desktop);
+			bottom: get($page-padding, desktop);
+			left: get($page-padding, desktop);
+			z-index: get($aside-config, base, zindex);
+		}
+
+		// Fixed Aside & Minimized Aside Mode
+		.aside-fixed.aside-minimize:not(.aside-minimize-hover) & {
+			width: get($aside-config, base, minimized-width);
+
+			.aside-logo {
+				display: none;
+			}
+		}
+	}
+
+	// Fixed Aside, Minimize Aside & Minimized Hovered Aside Modes
+	.aside-fixed.aside-minimize.aside-minimize-hover {
+		.aside {
+			width: get($aside-config, base, width);
+		}
+
+		.wrapper {
+			padding-left: get($aside-config, base, minimized-width);
+		}
+	}
+}
+
+// Tablet & Mobile Modes
+@include media-breakpoint-down(md) {
+	.aside {
+		overflow: auto;
+
+		// Aside Brand
+		.aside-brand {
+			display: none;
+		}
+
+		// Aside Brand
+		.aside-menu {
+			display: block;
+		}
+	}
+}
+
+// Build aside menu
+@include menu-ver-build-layout($aside-menu-config);
+@include menu-ver-build-theme($aside-menu-config, default);
+
+// Aside offcanvas panel for mobile mode
+@include offcanvas-build(aside, tablet-and-mobile, get($aside-config, offcanvas-mobile));

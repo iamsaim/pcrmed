@@ -1,0 +1,57 @@
+//
+// Base
+//
+
+// Body
+body {
+	background: $page-bg;
+}
+
+// Desktop Mode
+@include media-breakpoint-up(lg) {
+	// Wrapper
+	.wrapper {
+		transition: get($aside-config, base, transition);
+
+		// Fixed Aside & Minimized Modes
+		.aside-fixed & {
+			padding-left: get($aside-config, base, width) + get($page-padding, desktop);
+			transition: get($aside-config, base, transition);
+		}
+
+		// Fixed Aside & Minimized Modes
+		.aside-fixed.aside-minimize:not(.aside-minimize-hover) & {
+			padding-left: get($aside-config, base, minimized-width);
+			transition: get($aside-config, base, transition);
+		}
+
+		// Footer Fixed Mode
+		.footer-fixed & {
+			padding-bottom: get($footer-config, fixed, height);
+		}
+	}
+
+	// Containers
+	.container,
+	.container-fluid {
+		padding: 0 get($page-padding, desktop);
+	}
+}
+
+// Tablet & Mobile Modes
+@include media-breakpoint-down(md) {
+	// Wrapper
+	.wrapper {
+		// Fixed Header
+		.header-mobile-fixed & {
+			padding-top: get($header-config, tablet-and-mobile, default, height);
+		}
+	}
+
+	// Containers
+	.container,
+	.container-fluid {
+		max-width: none;
+		padding: 0 get($page-padding, tablet-and-mobile);
+	}
+}

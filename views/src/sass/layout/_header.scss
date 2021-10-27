@@ -1,0 +1,25 @@
+//
+// Header
+//
+
+
+// Desktop Mode
+@include media-breakpoint-up(lg) {
+	.header {
+		position: relative;
+		display: flex;
+		align-items: stretch;
+		transition: height 0.3s ease;
+		background-color: transparent;
+		z-index: 2;
+		padding-top: get($page-padding, desktop);
+
+		// Content
+		.container,
+		.container-fluid {
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+		}
+	}
+}
