@@ -1,5 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/7394a63e-ac03-4449-8a1b-90801882c17a/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/pcrmed",
     "appService.deploySubpath": ".",
     "git.ignoreLimitWarning": true
 }
